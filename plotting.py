@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 
-def plot_history(water_tank):
-    past_level, past_time, past_reward, past_influx, past_outflux = water_tank.get_history()
 
+def plot_history(past_level, past_time, past_reward, past_influx, past_outflux):
     fig, ax = plt.subplots(1, 3, figsize=(10, 5))
 
     # Plot the level with time on the first subplot
