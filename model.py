@@ -3,9 +3,9 @@ import wandb
 from torch import nn
 
 
-class Policy(nn.Module):
+class MLP(nn.Module):
     def __init__(self, params):
-        super(Policy, self).__init__()
+        super(MLP, self).__init__()
         self.params = params["model"]
         self.fc1 = nn.Linear(self.params["input_size"], self.params["hidden_size"])
         self.fc2 = nn.Linear(self.params["hidden_size"], self.params["output_size"])
