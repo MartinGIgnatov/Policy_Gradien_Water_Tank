@@ -4,17 +4,31 @@ from torch import nn
 
 
 class MLP(nn.Module):
-    def __init__(self, params):
+    def __init__(self, model_params):
         super(MLP, self).__init__()
-        self.params = params["model"]
-        self.fc1 = nn.Linear(self.params["input_size"], self.params["hidden_size"])
-        self.fc2 = nn.Linear(self.params["hidden_size"], self.params["output_size"])
-        self.relu = nn.ReLU()
-        self.sigmoid = nn.Sigmoid()
+
+        # self.params = params["model"]
+        # self.fc1 = nn.Linear(self.params["input_size"], self.params["hidden_size"])
+        # self.fc2 = nn.Linear(self.params["hidden_size"], self.params["output_size"])
+        # self.relu = nn.ReLU()
+        # self.sigmoid = nn.Sigmoid()
+
+        self.layer_sizes = model_params["layer_sizes"]
+        self.layers = []
+        for i in range(1, len(self.layer_sizes)):
+            self.layers.append(nn.Linear(self.layer_sizes[i - 1], self.layer_sizes[i]))
+            if i == len(self.layer_sizes) - 1:
+                self.layers.append(nn.Sigmoid())
+            else:
+                self.layers.append(nn.LeakyReLU()) # self.layers.append(nn.ReLU())
+        self.layers = nn.ModuleList(self.layers)
 
     def forward(self, x):
-        x = self.relu(self.fc1(x))
-        x = self.sigmoid(self.fc2(x))
+        # x = self.relu(self.fc1(x))
+        # x = self.sigmoid(self.fc2(x))
+
+        for i in range(len(self.layers)):
+            x = self.layers[i](x)
         return x
 
 

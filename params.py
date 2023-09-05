@@ -14,15 +14,19 @@ env_params = {
 
 # remove the first element for JAX
 model_params = {
-    "layers": [2,32,1]
+    "layer_sizes": [2, 32, 1]
 }
 
 run_params = {
-    "num_epochs": 1000,
+    "num_epochs": 500,
     "num_steps": 500
 }
 
 start_params = {
     "level": 10,
     "time": 0
+}
+
+optimizer_params = {
+    "learning_rate": 1e-3
 }
