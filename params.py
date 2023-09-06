@@ -18,7 +18,7 @@ model_params = {
 }
 
 run_params = {
-    "num_epochs": 500,
+    "num_epochs": 100,
     "num_steps": 500
 }
 
