@@ -11,3 +11,11 @@ A model has to control the amount of outflux of the water tank, knowing the curr
 The project has two main files. One for PyTorch and one for JAX, both should be directly runnable.
 One can control the parameters of the whole system from the parameter file.
 Each model has its parameters saved, however, they are overwritten every time a new model is trained.
+
+# Logging
+The project uses wandb.ai to log results and compare different runs. You have to set up an account and you can track too.
+If you do not want to, set all should_log parameters to False to avoid errors.
+
+# Results and Discussion
+There is an additional notebook that contains code snippets for some simple analysis.
+However, the discussion and findings are not available.
